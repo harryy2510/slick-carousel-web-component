@@ -1,17 +1,17 @@
 {
   "name": "slick-carousel-preact-web-component",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/slick-carousel.umd.cjs",
-  "module": "./dist/slick-carousel.js",
+  "main": "./dist/slick-carousel.umd.js",
+  "module": "./dist/slick-carousel.es.js",
   "exports": {
     ".": {
-      "import": "./dist/slick-carousel.js",
-      "require": "./dist/slick-carousel.umd.cjs"
+      "import": "./dist/slick-carousel.es.js",
+      "require": "./dist/slick-carousel.umd.js"
     }
   },
   "scripts": {

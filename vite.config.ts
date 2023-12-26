@@ -7,7 +7,7 @@ export default defineConfig({
     lib: {
       entry: "src/main.tsx",
       name: "SlickCarousel",
-      fileName: "slick-carousel",
+      fileName: (format) => `slick-carousel.${format}.js`,
     },
     rollupOptions: {
       external: ["preact"],
