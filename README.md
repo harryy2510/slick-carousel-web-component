@@ -26,7 +26,7 @@ Include the following script tag in your HTML:
 ```html
 <script
   type="module"
-  src="https://unpkg.com/slick-carousel-web-component"
+  src="https://unpkg.com/slick-carousel-preact-web-component"
 ></script>
 ```
 
