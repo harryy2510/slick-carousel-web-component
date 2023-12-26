@@ -1,4 +1,4 @@
-## Slick Carousel Web Component
+## Slick Carousel Preact Web Component
 
 The `slick-carousel` is a feature-rich web component that allows you to create a customizable, responsive, and touch-enabled carousel for your web applications. It is built with Preact and designed to be easy to integrate and use.
 

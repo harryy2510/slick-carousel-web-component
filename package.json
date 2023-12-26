@@ -1,5 +1,5 @@
 {
-  "name": "slick-carousel-web-component",
+  "name": "slick-carousel-preact-web-component",
   "private": false,
   "version": "0.0.1",
   "type": "module",
