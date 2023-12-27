@@ -82,18 +82,14 @@ You can customize `slick-carousel` by setting various properties:
 
 ### Advanced
 
-- `append-arrows` (String): Selector for custom arrow navigation container.
-- `append-dots` (String): Selector for custom dots navigation container.
 - `as-nav-for` (String): Selector or HTMLElement to sync with another carousel.
 - `css-ease` (String): CSS3 easing string for slide animation. Defaults to `'ease'`.
 - `easing` (String): jQuery easing string for animate() fallback. Defaults to `'linear'`.
 - `edge-friction` (Number): Resistance when swiping edges of non-infinite carousels. Defaults to `0.15`.
 - `lazy-load` (String): Sets lazy load technique, accepts `'ondemand'` or `'progressive'`. Defaults to `'ondemand'`.
 - `mobile-first` (Boolean): Uses mobile-first calculation for responsive settings. Defaults to `false`.
-- `next-arrow` (String): Custom HTML string or selector for the "Next" arrow.
 - `pause-on-dots-hover` (Boolean): Pauses autoplay when a dot is hovered. Defaults to `false`.
 - `pause-on-focus` (Boolean): Pauses autoplay when the slider is focused. Defaults to `true`.
-- `prev-arrow` (String): Custom HTML string or selector for the "Previous" arrow.
 - `respond-to` (String): Selector to set width for responsive settings. Defaults to `'window'`.
 - `responsive` (String): JSON stringified array of breakpoint and settings objects for responsive settings.
 - `touch-move` (Boolean): Allows slides to move with touch. Defaults to `true`.
@@ -107,10 +103,7 @@ You can customize `slick-carousel` by setting various properties:
 <slick-carousel
   accessibility="true"
   adaptive-height="false"
-  append-arrows=".carousel-arrows"
-  append-dots=".carousel-dots"
   arrows="true"
-  as-nav-for=".other-carousel"
   autoplay="false"
   autoplay-speed="3000"
   center-mode="false"
@@ -128,11 +121,9 @@ You can customize `slick-carousel` by setting various properties:
   initial-slide="0"
   lazy-load="ondemand"
   mobile-first="false"
-  next-arrow="<button type='button' class='slick-next'>Next</button>"
   pause-on-dots-hover="false"
   pause-on-focus="true"
   pause-on-hover="true"
-  prev-arrow="<button type='button' class='slick-prev'>Previous</button>"
   respond-to="window"
   responsive='[{"breakpoint": 1024, "settings": {"slides-to-show": 1}}, {"breakpoint": 600, "settings": {"slides-to-show": 2}}]'
   rows="1"

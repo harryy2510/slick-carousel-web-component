@@ -8,9 +8,6 @@ dependencies:
   preact:
     specifier: ^10.19.3
     version: 10.19.3
-  preact-custom-element:
-    specifier: ^4.3.0
-    version: 4.3.0(preact@10.19.3)
   preactement:
     specifier: ^1.8.5
     version: 1.8.5(preact@10.19.3)
@@ -31,9 +28,6 @@ devDependencies:
   '@types/jest':
     specifier: ^29.5.11
     version: 29.5.11
-  '@types/preact-custom-element':
-    specifier: ^4.0.4
-    version: 4.0.4
   '@types/react-slick':
     specifier: ^0.23.13
     version: 0.23.13
@@ -52,6 +46,9 @@ devDependencies:
   vite:
     specifier: ^5.0.10
     version: 5.0.10
+  vite-plugin-css-injected-by-js:
+    specifier: ^3.3.1
+    version: 3.3.1(vite@5.0.10)
 
 packages:
 
@@ -1175,12 +1172,6 @@ packages:
     resolution: {integrity: sha512-nNPsNE65wjMxEKI93yOP+NPGGBJz/PoN3kZsVLee0XMiJolxSekEVD8wRwBUBqkwc7UWop0edW50yrCQW4CyRw==}
     dependencies:
       undici-types: 5.26.5
-    dev: true
-
-  /@types/preact-custom-element@4.0.4:
-    resolution: {integrity: sha512-CkdXbHUnnJAluudh/3Y3hj4gx+mzl+GnqJuWUdEWKvppVQu7SqvvRlgkJVS73lRteC+BOnQ2TdLwZFZKHxNNnQ==}
-    dependencies:
-      preact: 10.19.3
     dev: true
 
   /@types/prop-types@15.7.11:
@@ -2862,14 +2853,6 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /preact-custom-element@4.3.0(preact@10.19.3):
-    resolution: {integrity: sha512-5hG7nQhU4e7RNfCEQklaUqYQiiyibLuJ2wbhR+E2v1m8m9NDsJok5MykW/Nx0YLLBcXr8xnkap6DwByGy2TzDA==}
-    peerDependencies:
-      preact: 10.x
-    dependencies:
-      preact: 10.19.3
-    dev: false
-
   /preact@10.19.3:
     resolution: {integrity: sha512-nHHTeFVBTHRGxJXKkKu5hT8C/YWBkPso4/Gad6xuj5dbptt9iF9NZr9pHbPhBrnT2klheu7mHTxTZ/LjwJiEiQ==}
 
@@ -3301,6 +3284,14 @@ packages:
       '@jridgewell/trace-mapping': 0.3.20
       '@types/istanbul-lib-coverage': 2.0.6
       convert-source-map: 2.0.0
+    dev: true
+
+  /vite-plugin-css-injected-by-js@3.3.1(vite@5.0.10):
+    resolution: {integrity: sha512-PjM/X45DR3/V1K1fTRs8HtZHEQ55kIfdrn+dzaqNBFrOYO073SeSNCxp4j7gSYhV9NffVHaEnOL4myoko0ePAg==}
+    peerDependencies:
+      vite: '>2.0.0-0'
+    dependencies:
+      vite: 5.0.10
     dev: true
 
   /vite@5.0.10:
