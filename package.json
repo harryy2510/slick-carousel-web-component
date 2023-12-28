@@ -1,7 +1,7 @@
 {
   "name": "slick-carousel-react-web-component",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "files": [
     "dist"
@@ -15,7 +15,8 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "@preact/preset-vite": "^2.7.0",
