@@ -1,4 +1,5 @@
-import { ReactNode, useEffect, useMemo, useRef } from "react";
+import { VNode } from "preact";
+import { useEffect, useMemo, useRef } from "preact/hooks";
 import Slider from "react-slick";
 import {
   processMethods,
@@ -11,7 +12,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export type SlickCarouselProps = Record<string, string> & {
-  children: ReactNode;
+  children: VNode;
   parent: HTMLElement;
 };
 

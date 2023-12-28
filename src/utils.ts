@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
+import { VNode } from "preact";
 import Slider, { Settings, SwipeDirection } from "react-slick";
 
-export function toChildren(input: any): ReactNode[] {
+export function toChildren(input: any): VNode[] {
   return (
     input
       .type?.()

@@ -26,8 +26,10 @@ To use the `slick-carousel` in your web page, define the carousel element and pa
 
 ```html
 <slick-carousel autoplay="true" slides-to-show="3" infinite="true">
-  <img src="path/to/image1.jpg" alt="First slide" />
-  <img src="path/to/image2.jpg" alt="Second slide" />
+  <img src="https://picsum.photos/1980/1080?1" alt="Description" />
+  <img src="https://picsum.photos/1980/1080?2" alt="Description" />
+  <img src="https://picsum.photos/1980/1080?3" alt="Description" />
+  <img src="https://picsum.photos/1980/1080?4" alt="Description" />
   <!-- Additional slides -->
 </slick-carousel>
 ```
@@ -124,8 +126,10 @@ The web component supports the following properties for customization:
   wait-for-animate="true"
   z-index="1000"
 >
-  <img src="path/to/image1.jpg" alt="Description" />
-  <img src="path/to/image2.jpg" alt="Description" />
+  <img src="https://picsum.photos/1980/1080?1" alt="Description" />
+  <img src="https://picsum.photos/1980/1080?2" alt="Description" />
+  <img src="https://picsum.photos/1980/1080?3" alt="Description" />
+  <img src="https://picsum.photos/1980/1080?4" alt="Description" />
   <!-- Add more items here -->
 </slick-carousel>
 ```
