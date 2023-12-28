@@ -1,9 +1,9 @@
+import { preact } from "@preact/preset-vite";
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
 export default defineConfig({
-  plugins: [react(), cssInjectedByJsPlugin()],
+  plugins: [preact(), cssInjectedByJsPlugin()],
   build: {
     lib: {
       entry: "src/main.tsx",
