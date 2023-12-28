@@ -1,7 +1,7 @@
-import { VNode } from "preact";
+import { ReactNode } from "react";
 import { Settings } from "react-slick";
 
-export function toChildren(input: any): VNode[] {
+export function toChildren(input: any): ReactNode[] {
   return (
     input
       .type?.()
@@ -64,19 +64,6 @@ export const numberPropKeys = [
   "speed",
   "touchThreshold",
   "zIndex",
-];
-
-export const callbackPropKeys = [
-  "afterChange",
-  "appendDots",
-  "beforeChange",
-  "customPaging",
-  "onEdge",
-  "onInit",
-  "onLazyLoad",
-  "onReInit",
-  "onSwipe",
-  "swipeEvent",
 ];
 
 export const specialPropKeys = ["useCSS", "responsive"];

@@ -1,4 +1,4 @@
-import { define } from "preactement";
+import { define } from "reactement";
 import { SlickCarousel } from "./slick-carousel.tsx";
 import { attributes } from "./utils.ts";
 
