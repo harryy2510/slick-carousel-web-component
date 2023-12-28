@@ -1,9 +1,9 @@
 import { defineConfig } from "vite";
-import preact from "@preact/preset-vite";
+import react from "@vitejs/plugin-react-swc";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
 export default defineConfig({
-  plugins: [preact(), cssInjectedByJsPlugin()],
+  plugins: [react(), cssInjectedByJsPlugin()],
   build: {
     emptyOutDir: false,
     lib: {
@@ -15,14 +15,6 @@ export default defineConfig({
       output: {
         manualChunks: undefined,
       },
-    },
-  },
-  resolve: {
-    alias: {
-      react: "preact/compat",
-      "react-dom/test-utils": "preact/test-utils",
-      "react-dom": "preact/compat",
-      "react/jsx-runtime": "preact/jsx-runtime",
     },
   },
 });
