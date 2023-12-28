@@ -1,7 +1,5 @@
-import { define } from "reactement";
+import { define } from "preactement";
 import { SlickCarousel } from "./slick-carousel.tsx";
 import { attributes } from "./utils.ts";
 
-define("slick-carousel", () => SlickCarousel, {
-  attributes,
-});
+define("slick-carousel", () => SlickCarousel, { attributes });

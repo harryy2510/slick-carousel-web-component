@@ -1,57 +1,42 @@
-## Slick Carousel Preact Web Component
+## Slick Carousel Web Component
 
-The `slick-carousel` is a feature-rich web component that allows you to create a customizable, responsive, and touch-enabled carousel for your web applications. It is built with Preact and designed to be easy to integrate and use.
+The `Slick Carousel Web Component` is a feature-rich web component that wraps `react-slick` carousel functionality. It provides an easy-to-use carousel experience with extensive customization options through HTML attributes.
 
 ## Features
 
-- Accessibility support with keyboard navigation.
-- Adaptive height for variable slide dimensions.
-- Ability to synchronize multiple carousels.
-- Autoplay functionality with customizable speed.
-- Center mode to highlight active slides.
-- Customizable arrow and dot navigation elements.
-- Lazy loading for efficient image handling.
-- Mobile-first responsive design.
-- Multiple rows and slides per row settings.
-- Right-to-left slide direction option.
+- Web Component-based carousel makes it easy to include in any HTML or modern web framework.
+- Extensive customization through HTML attributes in kebab-case.
+- Access to all `react-slick` functionalities.
+- Fully responsive with touch and swipe features.
 
-## Usage
+## Installation
 
-To use `slick-carousel`, include the script in your HTML file and add the carousel to your page.
-
-### 1. Include the Script
-
-Include the following script tag in your HTML:
+As a web component, `slick-carousel` should be included directly in your web project. Make sure to reference the JavaScript file that registers the custom element.
 
 ```html
 <script
   type="module"
-  src="https://unpkg.com/slick-carousel-preact-web-component"
+  src="https://unpkg.com/slick-carousel-react-web-component"
 ></script>
 ```
 
-### 2. Add the Carousel to Your Page
+## Usage
 
-Place the `<slick-carousel>` tag in your HTML and insert any number of `<img>` elements as children.
+To use the `slick-carousel` in your web page, define the carousel element and pass the desired properties:
 
 ```html
-<slick-carousel>
-  <img src="path/to/image1.jpg" alt="Description" />
-  <img src="path/to/image2.jpg" alt="Description" />
-  <!-- Add more items here -->
+<slick-carousel autoplay="true" slides-to-show="3" infinite="true">
+  <img src="path/to/image1.jpg" alt="First slide" />
+  <img src="path/to/image2.jpg" alt="Second slide" />
+  <!-- Additional slides -->
 </slick-carousel>
 ```
 
 ## Properties
 
-You can customize `slick-carousel` by setting various properties:
-
-### Accessibility
+The web component supports the following properties for customization:
 
 - `accessibility` (Boolean): Enables tabbing and arrow key navigation. Defaults to `true`.
-
-### Behavior
-
 - `adaptive-height` (Boolean): Adapts slider height to the current slide. Defaults to `false`.
 - `autoplay` (Boolean): Enables auto play of slides. Defaults to `false`.
 - `autoplay-speed` (Number): Auto play change interval in milliseconds. Defaults to `3000`.
@@ -67,9 +52,6 @@ You can customize `slick-carousel` by setting various properties:
 - `speed` (Number): Transition speed in milliseconds. Defaults to `300`.
 - `swipe` (Boolean): Enables touch swipe. Defaults to `true`.
 - `vertical` (Boolean): Enables vertical slide direction. Defaults to `false`.
-
-### Customization
-
 - `arrows` (Boolean): Shows next/prev navigation arrows. Defaults to `true`.
 - `dot-class` (String): Class for slide indicator dots container. Defaults to `'slick-dots'`.
 - `draggable` (Boolean): Enables desktop dragging. Defaults to `true`.
@@ -79,9 +61,6 @@ You can customize `slick-carousel` by setting various properties:
 - `swipe-to-slide` (Boolean): Allows swiping to any slide regardless of `slides-to-scroll`. Defaults to `false`.
 - `variable-width` (Boolean): Allows variable width for slides. Defaults to `false`.
 - `z-index` (Number): Sets the zIndex for slides. Defaults to `1000`.
-
-### Advanced
-
 - `as-nav-for` (String): Selector or HTMLElement to sync with another carousel.
 - `css-ease` (String): CSS3 easing string for slide animation. Defaults to `'ease'`.
 - `easing` (String): jQuery easing string for animate() fallback. Defaults to `'linear'`.
@@ -151,6 +130,81 @@ You can customize `slick-carousel` by setting various properties:
 </slick-carousel>
 ```
 
+## Events
+
+The `slick-carousel` web component emits custom events that you can listen to for carousel interactions and state changes. Here's a list of the events and the details they provide:
+
+- `afterChange`: Fired after a slide change. `event.detail` contains `{ currentSlide: number }`.
+- `beforeChange`: Fired before a slide change. `event.detail` contains `{ currentSlide: number, nextSlide: number }`.
+- `onEdge`: Fired when a swipe is detected that doesn't result in a slide change, such as at the carousel boundaries. `event.detail` contains `{ swipeDirection: string }`.
+- `onInit`: Fired after the carousel initializes. `event.detail` is an empty object `{}`.
+- `onLazyLoad`: Fired when a lazy load for slides is triggered. `event.detail` contains `{ slidesToLoad: number[] }`.
+- `onReInit`: Fired when the carousel re-initializes, usually after some state change. `event.detail` is an empty object `{}`.
+- `onSwipe`: Fired during a swipe interaction. `event.detail` contains `{ swipeDirection: string }`.
+- `swipeEvent`: Fired for every swipe event. `event.detail` contains `{ swipeDirection: string }`.
+
+To listen to carousel events, add event listeners to the `slick-carousel` element in your JavaScript:
+
+```javascript
+const carousel = document.querySelector("slick-carousel");
+
+carousel.addEventListener("afterChange", (event) => {
+  console.log("After change, current slide:", event.detail.currentSlide);
+});
+
+carousel.addEventListener("beforeChange", (event) => {
+  console.log(
+    "Before change, current slide:",
+    event.detail.currentSlide,
+    "Next slide:",
+    event.detail.nextSlide,
+  );
+});
+
+carousel.addEventListener("onEdge", (event) => {
+  console.log("On edge, swipe direction:", event.detail.swipeDirection);
+});
+
+carousel.addEventListener("onInit", () => {
+  console.log("Carousel initialized");
+});
+
+carousel.addEventListener("onLazyLoad", (event) => {
+  console.log("Lazy load, slides to load:", event.detail.slidesToLoad);
+});
+
+carousel.addEventListener("onReInit", () => {
+  console.log("Carousel re-initialized");
+});
+
+carousel.addEventListener("onSwipe", (event) => {
+  console.log("On swipe, direction:", event.detail.swipeDirection);
+});
+
+carousel.addEventListener("swipeEvent", (event) => {
+  console.log("Swipe event, direction:", event.detail.swipeDirection);
+});
+```
+
+## Methods
+
+The `slick-carousel` also exposes methods for programmatically controlling the carousel:
+
+- `slickGoTo(index, dontAnimate)`: Go to a specific slide index.
+- `slickNext()`: Go to the next slide.
+- `slickPrev()`: Go to the previous slide.
+- `slickPlay()`: Start the autoplay.
+- `slickPause()`: Pause the autoplay.
+
+To call a method, you can directly invoke it on the `slick-carousel` element:
+
+```javascript
+const carousel = document.querySelector("slick-carousel");
+
+// Go to the third slide without animation
+carousel.slickGoTo(2, true);
+```
+
 ## Styling
 
 You can style the carousel directly with CSS or inline styles. Target the `slick-carousel` element and its children in your CSS file.
@@ -171,4 +225,4 @@ We encourage contributions! If you have suggestions or improvements, please fork
 
 ## License
 
-`slick-carousel` is released under the MIT license.
+`Slick Carousel Web Component` is released under the MIT license.

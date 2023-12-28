@@ -4,13 +4,24 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  react-slick@0.29.0:
+    hash: yu2ifbhxbc7zhu6rqsgmk4uq7i
+    path: patches/react-slick@0.29.0.patch
+
 dependencies:
+  preact:
+    specifier: ^10.19.3
+    version: 10.19.3
+  preactement:
+    specifier: ^1.8.5
+    version: 1.8.5(preact@10.19.3)
   react:
     specifier: ^18.2.0
     version: 18.2.0
   react-slick:
     specifier: ^0.29.0
-    version: 0.29.0(react-dom@18.2.0)(react@18.2.0)
+    version: 0.29.0(patch_hash=yu2ifbhxbc7zhu6rqsgmk4uq7i)(react-dom@18.2.0)(react@18.2.0)
   reactement:
     specifier: ^1.1.4
     version: 1.1.4(react-dom@18.2.0)(react@18.2.0)
@@ -1452,6 +1463,19 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
+  /preact@10.19.3:
+    resolution: {integrity: sha512-nHHTeFVBTHRGxJXKkKu5hT8C/YWBkPso4/Gad6xuj5dbptt9iF9NZr9pHbPhBrnT2klheu7mHTxTZ/LjwJiEiQ==}
+    dev: false
+
+  /preactement@1.8.5(preact@10.19.3):
+    resolution: {integrity: sha512-amNlPLvhOz4ZImozZb3nizziiOGAmjLPPHGgKYE0192QsPALqq/lXECyzP6twsrvdidM0ay8zGHR1rgSKJxejw==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      preact: 10.x
+    dependencies:
+      preact: 10.19.3
+    dev: false
+
   /prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
@@ -1476,7 +1500,7 @@ packages:
       scheduler: 0.23.0
     dev: false
 
-  /react-slick@0.29.0(react-dom@18.2.0)(react@18.2.0):
+  /react-slick@0.29.0(patch_hash=yu2ifbhxbc7zhu6rqsgmk4uq7i)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-TGdOKE+ZkJHHeC4aaoH85m8RnFyWqdqRfAGkhd6dirmATXMZWAxOpTLmw2Ll/jPTQ3eEG7ercFr/sbzdeYCJXA==}
     peerDependencies:
       react: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
@@ -1490,6 +1514,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       resize-observer-polyfill: 1.5.1
     dev: false
+    patched: true
 
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}

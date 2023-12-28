@@ -6,56 +6,82 @@
     <title>Slick Carousel - Web Component</title>
   </head>
   <body>
-    <slick-carousel
-      accessibility="true"
-      adaptive-height="false"
-      arrows="true"
-      autoplay="false"
-      autoplay-speed="3000"
-      center-mode="false"
-      center-padding="50px"
-      css-ease="ease"
-      dots="false"
-      dots-class="slick-dots"
-      draggable="true"
-      easing="linear"
-      edge-friction="0.15"
-      fade="false"
-      focus-on-select="false"
-      focus-on-change="false"
-      infinite="true"
-      initial-slide="0"
-      lazy-load="ondemand"
-      mobile-first="false"
-      pause-on-dots-hover="false"
-      pause-on-focus="true"
-      pause-on-hover="true"
-      respond-to="window"
-      responsive='[{"breakpoint": 1024, "settings": {"slides-to-show": 1}}, {"breakpoint": 600, "settings": {"slides-to-show": 2}}]'
-      rows="1"
-      rtl="false"
-      slide=""
-      slides-per-row="1"
-      slides-to-scroll="1"
-      slides-to-show="1"
-      speed="300"
-      swipe="true"
-      swipe-to-slide="false"
-      touch-move="true"
-      touch-threshold="5"
-      use-css="true"
-      use-transform="true"
-      variable-width="false"
-      vertical="false"
-      vertical-swiping="false"
-      wait-for-animate="true"
-      z-index="1000"
-    >
-      <img src="/path/to/image.png" alt="Description" />
-      <img src="/path/to/image.png" alt="Description" />
-      <img src="/path/to/image.png" alt="Description" />
-      <img src="/path/to/image.png" alt="Description" />
-    </slick-carousel>
+    <div style="padding: 200px 0px">
+      <button id="prev">Previous</button>
+      <button id="next">Next</button>
+      <slick-carousel
+        id="hello"
+        accessibility="true"
+        adaptive-height="false"
+        arrows="true"
+        autoplay="false"
+        autoplay-speed="3000"
+        center-mode="false"
+        center-padding="50px"
+        css-ease="ease"
+        dots="false"
+        dots-class="slick-dots"
+        draggable="true"
+        easing="linear"
+        edge-friction="0.15"
+        fade="false"
+        focus-on-select="false"
+        focus-on-change="false"
+        infinite="true"
+        initial-slide="0"
+        lazy-load="ondemand"
+        mobile-first="false"
+        pause-on-dots-hover="false"
+        pause-on-focus="true"
+        pause-on-hover="true"
+        respond-to="window"
+        responsive='[{"breakpoint": 1024, "settings": {"slides-to-show": 1}}, {"breakpoint": 600, "settings": {"slides-to-show": 2}}]'
+        rows="1"
+        rtl="false"
+        slide=""
+        slides-per-row="1"
+        slides-to-scroll="1"
+        slides-to-show="1"
+        speed="300"
+        swipe="true"
+        swipe-to-slide="false"
+        touch-move="true"
+        touch-threshold="5"
+        use-css="true"
+        use-transform="true"
+        variable-width="false"
+        vertical="false"
+        vertical-swiping="false"
+        wait-for-animate="true"
+        z-index="1000"
+      >
+        <img src="https://picsum.photos/1980/1080?1" alt="Description" />
+        <img src="https://picsum.photos/1980/1080?2" alt="Description" />
+        <img src="https://picsum.photos/1980/1080?3" alt="Description" />
+        <img src="https://picsum.photos/1980/1080?4" alt="Description" />
+      </slick-carousel>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      const prev = document.getElementById("prev");
+      const next = document.getElementById("next");
+      const slider = document.getElementById("hello");
+      console.log(slider);
+      slider.addEventListener("afterChange", (event) => {
+        console.log("afterChange", event.detail);
+      });
+      slider.addEventListener("swipeEvent", (event) => {
+        console.log("swipeEvent", event.detail);
+      });
+      slider.addEventListener("onSwipe", (event) => {
+        console.log("onSwipe", event.detail);
+      });
+      next.addEventListener("click", () => {
+        slider.slickNext();
+      });
+      prev.addEventListener("click", () => {
+        slider.slickPrev();
+      });
+    </script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Settings } from "react-slick";
+import Slider, { Settings, SwipeDirection } from "react-slick";
 
 export function toChildren(input: any): ReactNode[] {
   return (
@@ -18,7 +18,7 @@ export function toKebabCase(str: string) {
   );
 }
 
-export const booleanPropKeys = [
+export const booleanProps = [
   "accessibility",
   "adaptiveHeight",
   "arrows",
@@ -41,9 +41,9 @@ export const booleanPropKeys = [
   "vertical",
   "verticalSwiping",
   "waitForAnimate",
+  "useCSS",
 ];
-
-export const stringPropKeys = [
+export const stringProps = [
   "centerPadding",
   "className",
   "cssEase",
@@ -52,8 +52,8 @@ export const stringPropKeys = [
   "lazyLoad",
   "slide",
 ];
-
-export const numberPropKeys = [
+export const jsonProps = ["responsive"];
+export const numberProps = [
   "autoplaySpeed",
   "edgeFriction",
   "initialSlide",
@@ -66,39 +66,73 @@ export const numberPropKeys = [
   "zIndex",
 ];
 
-export const specialPropKeys = ["useCSS", "responsive"];
-
 export const attributes = [
-  ...booleanPropKeys,
-  ...stringPropKeys,
-  ...numberPropKeys,
-  ...specialPropKeys,
+  ...booleanProps,
+  ...stringProps,
+  ...numberProps,
+  ...jsonProps,
 ].map(toKebabCase);
 
-export function processProps(input: any = {}): Settings {
-  const settings: Settings = {};
-  Object.keys(input).forEach((key) => {
-    if (numberPropKeys.includes(key)) {
-      // @ts-ignore
-      settings[key] = +input[key];
-    }
-    if (booleanPropKeys.includes(key)) {
-      // @ts-ignore
-      settings[key] = input[key] === "true";
-    }
-    if (stringPropKeys.includes(key)) {
-      // @ts-ignore
-      settings[key] = input[key];
-    }
-    if (specialPropKeys.includes(key)) {
-      switch (key) {
-        case "useCss":
-          settings.useCSS = input[key] === "true";
-          break;
-        case "responsive":
-          settings.responsive = JSON.parse(input[key]);
-          break;
-      }
+export function processEvents(el: HTMLElement): Partial<Settings> {
+  const dispatch = (event: string, input: any) => {
+    el.dispatchEvent(
+      new CustomEvent(event, {
+        bubbles: true,
+        detail: input,
+      }),
+    );
+  };
+  return {
+    afterChange: (currentSlide) => dispatch("afterChange", { currentSlide }),
+    beforeChange: (currentSlide: number, nextSlide: number) =>
+      dispatch("beforeChange", { currentSlide, nextSlide }),
+    onEdge: (swipeDirection: SwipeDirection) =>
+      dispatch("onEdge", { swipeDirection }),
+    onInit: () => dispatch("onInit", {}),
+    onLazyLoad: (slidesToLoad: number[]) =>
+      dispatch("onLazyLoad", { slidesToLoad }),
+    onReInit: () => dispatch("onReInit", {}),
+    onSwipe: (swipeDirection: SwipeDirection) =>
+      dispatch("onSwipe", { swipeDirection }),
+    swipeEvent: (swipeDirection: SwipeDirection) =>
+      dispatch("swipeEvent", { swipeDirection }),
+  };
+}
+
+const methodKeys = [
+  "slickGoTo",
+  "slickNext",
+  "slickPause",
+  "slickPlay",
+  "slickPrev",
+];
+
+export function processMethods(el: HTMLElement, slider: Slider) {
+  methodKeys.forEach((method) => {
+    // @ts-expect-error key is string but settings is expecting keyOf Settings.
+    el[method] = slider[method];
+  });
+}
+
+export function processProps(input: Record<string, string>): Partial<Settings> {
+  const settings: Partial<Settings> = {};
+  Object.keys(input ?? {}).forEach((key) => {
+    switch (true) {
+      case numberProps.includes(key):
+        // @ts-expect-error key is string but settings is expecting keyOf Settings.
+        settings[key] = +input[key];
+        break;
+      case booleanProps.includes(key) || key === "useCss":
+        // @ts-expect-error key is string but settings is expecting keyOf Settings.
+        settings[key] = /true/.test(input[key]);
+        break;
+      case jsonProps.includes(key):
+        // @ts-expect-error key is string but settings is expecting keyOf Settings.
+        settings[key] = JSON.parse(input[key]);
+        break;
+      default:
+        // @ts-expect-error key is string but settings is expecting keyOf Settings.
+        settings[key] = input[key];
     }
   });
   return settings;

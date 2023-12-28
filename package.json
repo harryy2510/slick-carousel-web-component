@@ -1,17 +1,15 @@
 {
   "name": "slick-carousel-react-web-component",
   "private": false,
-  "version": "0.0.3",
+  "version": "0.0.1",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/slick-carousel.umd.js",
-  "module": "./dist/slick-carousel.es.js",
+  "main": "./dist/slick-carousel.js",
   "exports": {
     ".": {
-      "import": "./dist/slick-carousel.es.js",
-      "require": "./dist/slick-carousel.umd.js"
+      "require": "./dist/slick-carousel.js"
     }
   },
   "scripts": {
@@ -20,6 +18,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
+    "preact": "^10.19.3",
+    "preactement": "^1.8.5",
     "react": "^18.2.0",
     "react-slick": "^0.29.0",
     "reactement": "^1.1.4",
@@ -39,5 +39,16 @@
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
     "vite-plugin-css-injected-by-js": "^3.3.1"
+  },
+  "alias": {
+    "react": "preact/compat",
+    "react-dom/test-utils": "preact/test-utils",
+    "react-dom": "preact/compat",
+    "react/jsx-runtime": "preact/jsx-runtime"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "react-slick@0.29.0": "patches/react-slick@0.29.0.patch"
+    }
   }
 }
